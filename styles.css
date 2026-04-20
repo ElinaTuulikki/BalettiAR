@@ -73,7 +73,7 @@ body {
 
 @media (max-width: 480px) {
     #controls {
-        bottom: calc(40px + env(safe-area-inset-bottom));
+        bottom: 120px;
     }
 }
 
