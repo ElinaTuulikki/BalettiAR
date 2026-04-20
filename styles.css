@@ -1,0 +1,180 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #0a0a1a;
+    color: white;
+    font-family: 'Georgia', serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.view {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Camera */
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* mirror so it feels natural */
+}
+
+#pose-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Countdown */
+#countdown-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20vw;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 40px rgba(255, 200, 255, 0.8);
+    animation: pulse 1s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50%       { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Start button */
+#controls {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+#start-btn, #restart-btn {
+    background: rgba(180, 100, 200, 0.8);
+    color: white;
+    border: 2px solid rgba(255, 200, 255, 0.5);
+    padding: 16px 48px;  /* FIX: was "16px, 48px" (comma is invalid) */
+    font-size: 1.3rem;
+    font-family: 'Georgia', serif;
+    border-radius: 50px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+#start-btn:hover, #restart-btn:hover {
+    background: rgba(220, 130, 240, 0.9);
+    transform: scale(1.05);
+}
+
+/* Results page */
+#result-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+    background: linear-gradient(135deg, #0a0a1a, #1a0a2a);
+}
+
+#captured-photo {
+    width: 100%;
+    max-width: 400px;
+    max-height: 40vh;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 2px solid rgba(200, 150, 255, 0.4);
+}
+
+#result-content {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(200, 150, 255, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+}
+
+#loading {
+    font-size: 1.2rem;
+    animation: pulse 1.5s infinite;
+}
+
+#result-text h2 {
+    font-size: 1.5rem;
+    color: #e8b4ff;
+    margin-bottom: 12px;
+}
+
+#result-text p {
+    line-height: 1.7;
+    color: #ddd;
+    font-size: 0.95rem;
+}
+
+/* Pose result details */
+.pose-result {
+    font-size: 1.6rem;
+    color: #f0d0ff;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.pose-description {
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.arms-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    color: #b8a0e0;
+    margin-bottom: 14px;
+}
+
+.arms-description {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.tips-header {
+    font-size: 0.9rem;
+    color: #c8a0ff;
+    margin: 12px 0 6px;
+}
+
+.tips {
+    list-style: none;
+    text-align: left;
+}
+
+.tips li {
+    padding: 4px 0;
+    font-size: 0.88rem;
+    color: #bbb;
+}
+
+.tips li::before {
+    content: "🩰 ";
+}
+
+#restart-btn {
+    margin-top: 10px;
+}

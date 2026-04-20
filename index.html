@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ballet AR</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 1. View: Camera + countdown -->
+    <div id="camera-view" class="view">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="pose-canvas"></canvas>  <!-- FIX: extra quote removed from id -->
+
+        <div id="countdown-display" class="hidden">  <!-- FIX: missing closing ">" -->
+            <span id="countdown-number">8</span>
+        </div>
+
+        <div id="controls">
+            <button id="start-btn">▶ Start</button>  <!-- FIX: was "start-button", must match app.js -->
+        </div>
+    </div>
+
+    <!-- 2. View: Results -->
+    <div id="result-view" class="view hidden">  <!-- FIX: extra quote removed from id -->
+        <img id="captured-photo" alt="Captured Photo">  <!-- FIX: extra quote removed from id -->
+        <div id="result-content">
+            <div id="loading">🩰 Analyzing the pose...</div>
+            <div id="result-text" class="hidden"></div>  <!-- FIX: duplicate id removed, added closing tag -->
+        </div>
+        <button id="restart-btn">↩ New pose</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
